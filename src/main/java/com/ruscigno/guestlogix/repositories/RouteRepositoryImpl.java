@@ -16,7 +16,7 @@ public class RouteRepositoryImpl{
 	}
 	
 	public Route save(Route route) {
-		if (items.stream().filter(item -> item.equals(route)).findAny().isEmpty()) {
+		if (items.stream().filter(item -> !item.equals(route)).findAny().isPresent()) {
 			items.add(route);
 		}
 		return route;

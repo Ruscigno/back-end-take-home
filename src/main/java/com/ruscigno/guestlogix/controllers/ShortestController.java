@@ -39,7 +39,7 @@ public class ShortestController {
 		
 		Optional<List<String>> shortesRoute = service.findShortestRoute(origin, destination);
 
-		if (shortesRoute.isEmpty()) {
+		if (!shortesRoute.isPresent()) {
 			log.info(DijkstraServiceImpl.NOT_FOUND_ANY_ROURE);
 			throw new NotFoundException(DijkstraServiceImpl.NOT_FOUND_ANY_ROURE);
 		}
