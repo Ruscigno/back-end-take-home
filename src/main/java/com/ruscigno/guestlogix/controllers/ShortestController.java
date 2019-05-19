@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ruscigno.guestlogix.error.NotFoundException;
 import com.ruscigno.guestlogix.services.DijkstraServiceImpl;
 
 @RestController
@@ -43,8 +44,9 @@ public class ShortestController {
 
 		if (shortesRoute.isEmpty()) {
 			log.info(ANY_ROURE);
-			return ResponseEntity.badRequest().body(Arrays.asList(ANY_ROURE));
+			throw new NotFoundException(ANY_ROURE);
 		}
 		return ResponseEntity.ok(shortesRoute.get());
 	}
+
 }

@@ -41,7 +41,7 @@ public class DijkstraServiceImpl {
 	private Optional<List<String>> createMeaningfulFeedback(List<Vertex> path) {
 		List<String> response = new ArrayList<>();
 		for (Vertex item : path) {
-			response.add(String.format("Airport %s: %s", response.size() + 1, item.getName()));
+			response.add(item.getName());
 		}
 		return Optional.of(response);
 	}

@@ -18,7 +18,6 @@ import com.ruscigno.guestlogix.utils.CsvLoader;
 public class GuestlogixConfig {
 
 	private static final Logger log = LoggerFactory.getLogger(GuestlogixConfig.class);
-	private static final String ASK_ADMIN = "Aks system administrator do insert this record in our database";
 
 	@Autowired
 	private RouteServiceImpl routeService;
