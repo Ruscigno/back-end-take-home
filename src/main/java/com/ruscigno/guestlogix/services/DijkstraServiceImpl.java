@@ -10,10 +10,14 @@ import org.springframework.stereotype.Service;
 
 import com.ruscigno.guestlogix.domain.Graph;
 import com.ruscigno.guestlogix.domain.Vertex;
+import com.ruscigno.guestlogix.error.NotFoundException;
 import com.ruscigno.guestlogix.utils.DijkstraAlgorithm;
 
 @Service
 public class DijkstraServiceImpl {
+	public static final String ERROR_MESSAGE = "This airport does not exist in our database: %s = %s";
+	public static final String NOT_FOUND_ANY_ROURE = "Could not find any route to specified airports";
+	
 	@Autowired
 	private VertexServiceImpl nodeService;
 
@@ -52,15 +56,19 @@ public class DijkstraServiceImpl {
 	}
 
 	private boolean checkAirports(String origin, String destination) {
+		List<String> errors = new ArrayList<>();
 		originNode = nodeService.findAll().stream().filter(item -> item.getName().equalsIgnoreCase(origin)).findFirst();
 		if (originNode.isEmpty())
-			return true;
+			errors.add(String.format(ERROR_MESSAGE, "origin", origin));
 
 		destinationNode = nodeService.findAll().stream().filter(item -> item.getName().equalsIgnoreCase(destination))
 				.findFirst();
 		if (destinationNode.isEmpty())
-			return true;
+			errors.add(String.format(ERROR_MESSAGE, "destination", destination));
 
+		if (!errors.isEmpty())
+			throw new NotFoundException(NOT_FOUND_ANY_ROURE, errors);
+		
 		return false;
 	}
 

@@ -1,7 +1,5 @@
 package com.ruscigno.guestlogix.controllers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +22,6 @@ import com.ruscigno.guestlogix.services.DijkstraServiceImpl;
 public class ShortestController {
 
 	private static final Logger log = LoggerFactory.getLogger(ShortestController.class);
-	private static final String ANY_ROURE = "Could not find any route to specified airports";
 
 	@Autowired
 	private DijkstraServiceImpl service;
@@ -43,8 +40,8 @@ public class ShortestController {
 		Optional<List<String>> shortesRoute = service.findShortestRoute(origin, destination);
 
 		if (shortesRoute.isEmpty()) {
-			log.info(ANY_ROURE);
-			throw new NotFoundException(ANY_ROURE);
+			log.info(DijkstraServiceImpl.NOT_FOUND_ANY_ROURE);
+			throw new NotFoundException(DijkstraServiceImpl.NOT_FOUND_ANY_ROURE);
 		}
 		return ResponseEntity.ok(shortesRoute.get());
 	}
