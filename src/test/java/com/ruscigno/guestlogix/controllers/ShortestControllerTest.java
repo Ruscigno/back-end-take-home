@@ -40,15 +40,12 @@ public class ShortestControllerTest {
 
 	private static final String URL = "/api/v1/routes/shortest";
 	private static final String URL_PARAM = "?destination=%s&origin=%s";
-	private static final String URL_INVALID_PARAM = "?destination=%s";
 	private static final String URL_BAD_REQUEST = "/api/v1/routes/shortest";
 	private static final String ORIGIN_IATA = "ABJ";
 	private static final String DESTINATION_IATA = "BJM";
 	private static final String NOT_FOUND_IATA = "RUSCIGNO";
 	private static final List<String> RESULT = new ArrayList<>(List.of("ABJ", "BRU", "BJM"));
 	private static final String RESULT_RAW = "[\"ABJ\",\"BRU\",\"BJM\"]";
-	private static final String ERROR_BODY = "[\"%s\"]";
-	private static final String ERROR_BODY_BOTH = "[\"%s\", \"%s\"]";
 
 	@Test
 	public void findShortestRouteValidTest() throws Exception {

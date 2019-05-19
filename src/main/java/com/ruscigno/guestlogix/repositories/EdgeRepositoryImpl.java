@@ -16,7 +16,7 @@ public class EdgeRepositoryImpl{
 	}
 	
 	public Edge save(Edge edge) {
-		if (items.stream().filter(item -> item.equals(edge)).findAny().isEmpty()) {
+		if (items.stream().filter(item -> !item.equals(edge)).findAny().isPresent()) {
 			items.add(edge);
 		}
 		return edge;
