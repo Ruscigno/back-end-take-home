@@ -3,6 +3,7 @@ package com.ruscigno.guestlogix.services;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +42,7 @@ public class DijkstraServiceImplTest {
 	private static final String ORIGEM = "ABJ";
 	private static final String STOP_01 = "BRU";
 	private static final String DESTINATION = "BJM";
-	private static final List<String> RESPONSE = List.of(ORIGEM, STOP_01, DESTINATION);
+	private static final List<String> RESPONSE = new ArrayList<>(Arrays.asList(ORIGEM, STOP_01, DESTINATION));
 
 	private List<Vertex> nodes = new ArrayList<>();
 	private List<Edge> edges = new ArrayList<>();

@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,7 +45,7 @@ public class ShortestControllerTest {
 	private static final String ORIGIN_IATA = "ABJ";
 	private static final String DESTINATION_IATA = "BJM";
 	private static final String NOT_FOUND_IATA = "RUSCIGNO";
-	private static final List<String> RESULT = new ArrayList<>(List.of("ABJ", "BRU", "BJM"));
+	private static final List<String> RESULT = new ArrayList<>(Arrays.asList("ABJ", "BRU", "BJM"));
 	private static final String RESULT_RAW = "[\"ABJ\",\"BRU\",\"BJM\"]";
 
 	@Test
