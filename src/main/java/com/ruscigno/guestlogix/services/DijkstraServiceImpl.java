@@ -56,12 +56,12 @@ public class DijkstraServiceImpl {
 	private void checkAirports(String origin, String destination) {
 		List<String> errors = new ArrayList<>();
 		originNode = nodeService.findAll().stream().filter(item -> item.getName().equalsIgnoreCase(origin)).findFirst();
-		if (originNode.isEmpty())
+		if (!originNode.isPresent())
 			errors.add(String.format(ERROR_MESSAGE, "origin", origin));
 
 		destinationNode = nodeService.findAll().stream().filter(item -> item.getName().equalsIgnoreCase(destination))
 				.findFirst();
-		if (destinationNode.isEmpty())
+		if (!destinationNode.isPresent())
 			errors.add(String.format(ERROR_MESSAGE, "destination", destination));
 
 		if (!errors.isEmpty())
