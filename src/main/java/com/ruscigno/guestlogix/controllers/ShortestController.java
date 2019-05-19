@@ -1,5 +1,8 @@
 package com.ruscigno.guestlogix.controllers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -12,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ruscigno.guestlogix.dto.ShortestResponseDTO;
-import com.ruscigno.guestlogix.response.Response;
 import com.ruscigno.guestlogix.services.DijkstraServiceImpl;
 
 @RestController
@@ -22,6 +23,7 @@ import com.ruscigno.guestlogix.services.DijkstraServiceImpl;
 public class ShortestController {
 
 	private static final Logger log = LoggerFactory.getLogger(ShortestController.class);
+	private static final String ANY_ROURE = "Could not find any route to specified airports";
 
 	@Autowired
 	private DijkstraServiceImpl service;
@@ -33,19 +35,16 @@ public class ShortestController {
 	 * @return ResponseEntity<Response<EmployeeDto>>
 	 */
 	@GetMapping(value = "shortest")
-	public ResponseEntity<Response<ShortestResponseDTO>> getShortestRoute(
+	public ResponseEntity<List<String>> getShortestRoute(
 			@RequestParam(value = "origin", required = true) String origin,
 			@RequestParam(value = "destination", required = true) String destination) {
-		Response<ShortestResponseDTO> response = new Response<>();
-		Optional<ShortestResponseDTO> shortesRoute = service.findShortestRoute(origin, destination);
+		
+		Optional<List<String>> shortesRoute = service.findShortestRoute(origin, destination);
 
 		if (shortesRoute.isEmpty()) {
-			log.info("Could not find any route to specified airports");
-			response.getErrors().add("Could not find any route to specified airports");
-			return ResponseEntity.badRequest().body(response);
+			log.info(ANY_ROURE);
+			return ResponseEntity.badRequest().body(Arrays.asList(ANY_ROURE));
 		}
-
-		response.setData(shortesRoute.get());
-		return ResponseEntity.ok(response);
+		return ResponseEntity.ok(shortesRoute.get());
 	}
 }

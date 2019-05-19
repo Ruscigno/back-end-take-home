@@ -1,6 +1,8 @@
 package com.ruscigno.guestlogix.services;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.ruscigno.guestlogix.domain.Graph;
 import com.ruscigno.guestlogix.domain.Vertex;
-import com.ruscigno.guestlogix.dto.ShortestResponseDTO;
 import com.ruscigno.guestlogix.utils.DijkstraAlgorithm;
 
 @Service
@@ -24,10 +25,10 @@ public class DijkstraServiceImpl {
 	Optional<Vertex> originNode;
 	Optional<Vertex> destinationNode;
 
-	public Optional<ShortestResponseDTO> findShortestRoute(String origin, String destination) {
+	public Optional<List<String>> findShortestRoute(String origin, String destination) {
 		dijkstraInit();
 
-		if (checkAiports(origin, destination))
+		if (checkAirports(origin, destination))
 			return Optional.empty();
 
 		LinkedList<Vertex> path = getPath();
@@ -37,13 +38,11 @@ public class DijkstraServiceImpl {
 		return createMeaningfulFeedback(path);
 	}
 
-	private Optional<ShortestResponseDTO> createMeaningfulFeedback(LinkedList<Vertex> path) {
-		ShortestResponseDTO response = new ShortestResponseDTO();
+	private Optional<List<String>> createMeaningfulFeedback(List<Vertex> path) {
+		List<String> response = new ArrayList<>();
 		for (Vertex item : path) {
-			response.getShortesRoute()
-					.add(String.format("Airport %s: %s", response.getShortesRoute().size() + 1, item.getName()));
+			response.add(String.format("Airport %s: %s", response.size() + 1, item.getName()));
 		}
-
 		return Optional.of(response);
 	}
 
@@ -52,7 +51,7 @@ public class DijkstraServiceImpl {
 		return dijkstra.getPath(destinationNode.get());
 	}
 
-	private boolean checkAiports(String origin, String destination) {
+	private boolean checkAirports(String origin, String destination) {
 		originNode = nodeService.findAll().stream().filter(item -> item.getName().equalsIgnoreCase(origin)).findFirst();
 		if (originNode.isEmpty())
 			return true;
