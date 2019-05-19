@@ -17,7 +17,7 @@ import com.ruscigno.guestlogix.utils.DijkstraAlgorithm;
 public class DijkstraServiceImpl {
 	public static final String ERROR_MESSAGE = "This airport does not exist in our database: %s = %s";
 	public static final String NOT_FOUND_ANY_ROURE = "Could not find any route to specified airports";
-	
+
 	@Autowired
 	private VertexServiceImpl nodeService;
 
@@ -31,9 +31,7 @@ public class DijkstraServiceImpl {
 
 	public Optional<List<String>> findShortestRoute(String origin, String destination) {
 		dijkstraInit();
-
-		if (checkAirports(origin, destination))
-			return Optional.empty();
+		checkAirports(origin, destination);
 
 		LinkedList<Vertex> path = getPath();
 		if (path.isEmpty())
@@ -55,7 +53,7 @@ public class DijkstraServiceImpl {
 		return dijkstra.getPath(destinationNode.get());
 	}
 
-	private boolean checkAirports(String origin, String destination) {
+	private void checkAirports(String origin, String destination) {
 		List<String> errors = new ArrayList<>();
 		originNode = nodeService.findAll().stream().filter(item -> item.getName().equalsIgnoreCase(origin)).findFirst();
 		if (originNode.isEmpty())
@@ -68,8 +66,6 @@ public class DijkstraServiceImpl {
 
 		if (!errors.isEmpty())
 			throw new NotFoundException(NOT_FOUND_ANY_ROURE, errors);
-		
-		return false;
 	}
 
 	private void dijkstraInit() {

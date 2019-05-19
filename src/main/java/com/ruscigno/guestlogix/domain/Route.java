@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Route{
-	private String id;
+//	private String id;
 	private String airlineId;
 	private String origin;
 	private String destination;

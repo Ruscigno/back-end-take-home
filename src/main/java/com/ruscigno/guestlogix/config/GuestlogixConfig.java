@@ -42,10 +42,14 @@ public class GuestlogixConfig {
 	}
 
 	private void createNodes(Route route) {
+		createNodes(route, nodeService, edgeService);
+	}
+	
+	public static void createNodes(Route route, VertexServiceImpl nodes, EdgeServiceImpl edges) {
 		Vertex origin = new Vertex(route.getOrigin());
 		Vertex destination = new Vertex(route.getDestination());
-		nodeService.insert(origin);
-		nodeService.insert(destination);
-		edgeService.insert(new Edge(route.toString(), origin, destination));
+		nodes.insert(origin);
+		nodes.insert(destination);
+		edges.insert(new Edge(route.toString(), origin, destination));
 	}
 }
