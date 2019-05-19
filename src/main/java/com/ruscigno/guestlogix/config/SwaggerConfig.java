@@ -26,8 +26,8 @@ public class SwaggerConfig {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-			.title("Chronos Employee Time Tracking API")
-			.description("RESTfull API to show the power of Java and Spring Boot.")
+			.title("Guestlogix Take Home Test - Backend")
+			.description("Tackling a problem in the real world")
 			.contact(new Contact("Sander Ruscigno", "https://www.ruscigno.com.br", "ruscigno@gmail.com"))
 			.version("1.0")
 			.build();
