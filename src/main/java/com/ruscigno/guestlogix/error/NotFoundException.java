@@ -3,11 +3,11 @@ package com.ruscigno.guestlogix.error;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@EqualsAndHashCode(callSuper=false)
+@Getter
+@Setter
 public class NotFoundException extends RuntimeException {
     private static final long serialVersionUID = 2246519313095829360L;
     private List<String> errors = new ArrayList<>();

@@ -2,17 +2,12 @@ package com.ruscigno.guestlogix.domain;
 
 import java.util.List;
 
+
 public class Graph {
-	private final List<Vertex> vertexes;
 	private final List<Edge> edges;
 
-	public Graph(List<Vertex> vertexes, List<Edge> edges) {
-		this.vertexes = vertexes;
+	public Graph(List<Edge> edges) {
 		this.edges = edges;
-	}
-
-	public List<Vertex> getVertexes() {
-		return vertexes;
 	}
 
 	public List<Edge> getEdges() {

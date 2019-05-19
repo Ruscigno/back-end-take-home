@@ -69,7 +69,7 @@ public class DijkstraServiceImpl {
 	}
 
 	private void dijkstraInit() {
-		graph = new Graph(nodeService.findAll(), edgeService.findAll());
+		graph = new Graph(edgeService.findAll());
 		dijkstra = new DijkstraAlgorithm(graph);
 	}
 }
