@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/Ruscigno/back-end-take-home.svg?branch=master)](https://travis-ci.org/Ruscigno/back-end-take-home)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge&style=flat)](https://ruscigno-guestlogix.herokuapp.com/swagger-ui.html)
+
 ## Doubts
 - Should I return only a list of values with the IATA3 code?
 Yes

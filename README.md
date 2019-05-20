@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/Ruscigno/back-end-take-home.svg?branch=master)](https://travis-ci.org/Ruscigno/back-end-take-home)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge&style=flat)](https://ruscigno-guestlogix.herokuapp.com/swagger-ui.html)
+
 # Guestlogix Take Home Test - Backend
 
 At Guestlogix we feel that putting developers on the spot with advanced algorithmic puzzles doesn’t exactly highlight one’s true skillset. The intention of this assessment is to see how you approach and tackle a problem in the real world, not quivering in front of a whiteboard.
