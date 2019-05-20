@@ -55,12 +55,14 @@ You should have Java 1.8, Maven and Git client already installed
 1. clone: `git clone https://github.com/Ruscigno/back-end-take-home.git`
 2. compile: `mvn clean package -DskipTests`
 3. run: `java -jar target/Ruscigno.Guestlogix-0.0.1-SNAPSHOT.jar`
+4. go to: `http://localhost:8080/swagger-ui.html`
 
 ### Make docker image
 You should have Docker and Docker Compose already installed
 1. clone: `git clone https://github.com/Ruscigno/back-end-take-home.git`
 2. build: `docker build --rm -t back-end-take-home:latest .`
 3. run: `docker-compose -f "docker-compose.yml" up`
+4. go to: `http://localhost:8080/swagger-ui.html`
 
 ### Running Tests
 1. compile: `mvn test`
