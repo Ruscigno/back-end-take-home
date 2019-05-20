@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/Ruscigno/back-end-take-home.svg?branch=master)](https://travis-ci.org/Ruscigno/back-end-take-home)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge&style=flat)](https://ruscigno-guestlogix.herokuapp.com/swagger-ui.html)
 
-## Architectural considerations
+# Architectural considerations
 
 - I tried to use SOLID, Clean Code and DRY (Do not Repeat Yourself) concepts, using generics for example, but since I had little time to complete the challenge, I understood that adding this complexity to such a simple project would not be advantageous. Therefore, some entities, repositories, and services have duplicate code.
 - I also considered the use of HATEOAS, so I could return a simplistic response (as I do) but with great added value. Due to the time I also discarded it.
@@ -49,7 +49,7 @@ https://ruscigno-guestlogix.herokuapp.com/swagger-ui.html
  - Since this exercise only asks for a shortest route endpoint, I did not include any other endpoint.
  - As I am participating in the Toronto LEAP event, I have many other tech tests to do, so I kept this one as simple as possible
 
-### Compilation
+# Compilation
 You should have Java 1.8, Maven and Git client already installed
 
 1. clone: `git clone https://github.com/Ruscigno/back-end-take-home.git`
