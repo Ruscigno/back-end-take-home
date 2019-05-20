@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+  db:
+    image: back-end-take-home:latest
+    container_name: "ruscigno"
+    restart: always
+    ports:
+      - 8080:8080
