@@ -16,7 +16,7 @@ public class VertexRepositoryImpl {
 	}
 	
 	public Vertex save(Vertex vertex) {
-		if (items.stream().filter(item -> !item.equals(vertex)).findAny().isPresent()) {
+		if (!items.stream().filter(item -> item.equals(vertex)).findAny().isPresent()) {
 			items.add(vertex);
 		}
 		return vertex;
